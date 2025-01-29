@@ -10,9 +10,6 @@ function getHumanChoice() {
     return humanChoice;
 }
 
-const humanChoice = getHumanChoice();
-console.log("You chose:", humanChoice);
-
 function getComputerChoice() {
     const randomGame = Math.floor (Math.random() * 3);
     switch (randomGame) {
@@ -24,16 +21,10 @@ function getComputerChoice() {
             return "Scissors";
     }
 }
-const computerChoice = getComputerChoice();
-console.log("Computer chose:", computerChoice);
 
-    let humanScore = 0;
-    let computerScore = 0;
-
-    function playRound(humanChoice, computerChoice) {
-
-        humanChoice = humanChoice.toLowerCase();
-        computerChoice = computerChoice.toLowerCase();
+function playRound(humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
 
         if (humanChoice === computerChoice) {
             return "It's a tie";
@@ -48,4 +39,41 @@ console.log("Computer chose:", computerChoice);
         }
     }
 
-    console.log(playRound(humanChoice, computerChoice));
+    function playGame() {
+        let humanScore = 0;
+        let computerScore = 0;
+
+        for (let round = 1; round <= 5; round++) {
+            console.log(`Round ${round}:`);
+            const humanChoice = getHumanChoice();
+            const computerChoice = getComputerChoice();
+
+            const result = playRound(humanChoice, computerChoice);
+            console.log(result);
+
+            if(result === "Human wins!") {
+                humanScore++;
+            } else if(result === "Computer wins!") {
+                computerScore++;
+            }
+            console.log("Current scores:");
+            console.log("Human Score: ", humanScore);
+            console.log("Computer Score: ", computerScore);
+        }
+        if (humanScore > computerScore) {
+            console.log("You win the game!")
+        } else if (computerScore > humanScore) {
+            console.log("Computer wins game!")
+        } else {
+            console.log("It's a tie game!")
+        }
+    }
+
+ playGame();   
+
+/*
+console.log(playRound(humanChoice, computerChoice));
+console.log("You chose:", humanChoice);
+console.log("Computer chose:", computerChoice);
+*/
+    
