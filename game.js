@@ -71,6 +71,7 @@ function playRound(humanChoice, computerChoice) {
 
  playGame();   
 
+
 /*
 console.log(playRound(humanChoice, computerChoice));
 console.log("You chose:", humanChoice);
